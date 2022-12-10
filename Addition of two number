@@ -1,0 +1,41 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Addition {
+    public static void main(String[] args) {
+        checkAddition ca1 = new checkAddition();
+    }
+}
+
+class checkAddition extends JFrame implements ActionListener {
+    JTextField t1 , t2;
+    JButton b;
+    JLabel lb;
+     checkAddition(){
+
+          t1 = new JTextField(20);
+          t2 = new JTextField(20);
+          b = new JButton("Add");
+          lb = new JLabel("Answer shows here : ");
+         add(t1);
+         add(t2);
+         add(b);
+         add(lb);
+
+        b.addActionListener(this);
+
+         setVisible(true);
+         setSize(450 , 450);
+         setLayout(new FlowLayout());
+         setDefaultCloseOperation(3);
+     }
+
+     public void actionPerformed(ActionEvent ae){
+         int first = Integer.parseInt(t1.getText());
+         int second = Integer.parseInt(t2.getText());
+         int value = first + second;
+         lb.setText(value + "");
+     }
+}
