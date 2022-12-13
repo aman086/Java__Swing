@@ -1,0 +1,69 @@
+
+
+class Q{
+    int num;
+    Boolean setValue = false;
+    synchronized void set(int num){
+        if(setValue){
+            try{wait();} catch (Exception e){}
+        }
+        this.num = num;
+        System.out.println("Put : " + num);
+
+        setValue = true;
+        notify();
+    }
+
+    synchronized void get(){
+        if(!setValue){
+            try{wait();} catch (Exception e){}
+        }
+
+        System.out.println("Get : " + num);
+        setValue = false;
+        notify();
+
+    }
+}
+
+class Producer implements Runnable{
+   Q pro_q;
+    Producer(Q q){
+        pro_q = q;
+        Thread t1 = new Thread(this , "Producer");
+        t1.start();
+    }
+    public void run(){
+        int i=0;
+        while (true){
+            pro_q.set(i++);
+            try{Thread.sleep(500);} catch (Exception e){}
+        }
+    }
+}
+
+class Consumer implements Runnable{
+    Q cons_q;
+    Consumer(Q q){
+        cons_q = q;
+        Thread t1 = new Thread(this , "Consumer");
+        t1.start();
+    }
+    public void run(){
+        while(true) {
+            cons_q.get();
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+         Q q = new Q();
+         new Producer(q);
+         new Consumer(q);
+    }
+}
