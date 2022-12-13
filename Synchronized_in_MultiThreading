@@ -1,0 +1,40 @@
+
+class counter{
+    int count = 0;
+    synchronized void increment(){
+        count++; // count = count + 1;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        counter cnn = new counter();
+//        A a = new A();
+//        B b = new B();
+        Thread t1 = new Thread(new Runnable() {
+            public  void run() {
+                for(int i=0;i<10000;i++){
+                    cnn.increment();
+                }
+            }
+        });
+        Thread t2 = new Thread(new Runnable() {
+            public void run() {
+                for(int i=0;i<10000;i++) {
+                    cnn.increment();
+//                    try {
+//                        Thread.sleep(500);
+//                        System.out.println("Mai abhi so rha hu");
+//                    } catch (Exception e) {
+//                    }
+                }
+            }
+        });
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+        System.out.println("Count : " + cnn.count);
+    }
+}
