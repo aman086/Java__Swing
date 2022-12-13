@@ -1,0 +1,97 @@
+import org.w3c.dom.Text;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        swingDemo obj = new swingDemo();
+    }
+}
+class swingDemo extends JFrame{
+    swingDemo(){
+
+//        JTabbedPane tp=new JTabbedPane();
+//        JTextArea ta=new JTextArea(30,30);
+//        JTextArea ta1=new JTextArea(30,30);
+//        JTextArea ta2=new JTextArea(30,30);
+//        JPanel p1=new JPanel();
+//        p1.add(ta);
+//        JPanel p2=new JPanel();
+//        p2.add(ta1);
+//        Button bt = new Button("Mai hun don");
+//        JPanel p3=new JPanel();
+//        p3.add(bt);
+//        p3.add(ta2);
+//        tp.add("main" , p1);
+//        tp.add("visit" , p2);
+//        tp.add("help",p3);
+//        add(tp);
+
+
+
+        /*
+        *   JList :- which lists down all the elements of given list and we can
+        *   select/deselect Items..
+
+        String Cities[] = { "New York", "Chicago", "Houston", "Denver", "Los Angeles", "Seattle",
+                "London", "Paris", "New Delhi", "Hong Kong", "Tokyo", "Sydney" };
+
+        JList jll = new JList(Cities);
+        add(jll);
+         *
+        * */
+
+
+
+        /*
+        *
+        *  TextArea textAr = new TextArea(20 , 10);
+            JScrollPane jsp = new JScrollPane(textAr);
+            add(jsp);
+        *
+        *
+        * */
+
+
+
+        /*
+        *
+        *   String country[]={"India","Aus","U.S.A","England","Newzealand"};
+             JComboBox cb=new JComboBox(country);
+            add(cb);
+        * */
+
+
+        /*
+            String data[][]={ {"101","Amit","670000"},
+                          {"102","Jai","780000"},
+                          {"101","Sachin","700000"}};
+            String column[]={"ID","NAME","SALARY"};
+            JTable jt=new JTable(data,column);
+            add(jt);
+        */
+        JLabel jl = new JLabel("Aman bhai");
+       JButton j1 = new JButton("first");
+       JButton j2 = new JButton("Second");
+//       add(j1);
+//       add(j2);
+
+       JPanel jp = new JPanel();
+       jp.add(j1);
+       jp.add(j2);
+
+        add(jl);
+        add(jp);
+        setVisible(true);
+//        JLabel jl = new JLabel("Aman bhai");
+        setLayout(new FlowLayout());
+        setSize(400 , 400);
+        setDefaultCloseOperation(3);
+    }
+
+}
+
